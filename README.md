@@ -1,9 +1,8 @@
 
 # Tugas Sesi 1: Building the First Feature of KelanaAI
 
-Ummi Kalsum Naik Kapal Selam. 
-Assalamu'alaikum. Wa'alaikumsalam. 
-
+Ummi Kalsum Naik Kapal Selam. </br>
+Assalamu'alaikum. Wa'alaikumsalam. </br>
 
 Halo nama gw Yusuf. Di sesi 1 ini kita ditugaskan untuk mengembangkan fitur Trip Summary Generator dalam bentuk aplikasi konsol berbasis Python.
 

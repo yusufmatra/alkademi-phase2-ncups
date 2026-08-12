@@ -35,17 +35,17 @@ def print_trip_summary(
     print()
 
 #eksplorasi inputan interaktif sesuai tugas di website
-destination = input("Destination: ")
-country = input("Country: ")
-days = int(input("Days: "))
-budget = float(input("Budget: "))
+destination = input("Enter Destination: ")
+country = input("Destination Country: ")
+days = int(input("Many Days: "))
+budget = float(input("Your Budget: "))
 travel_style = input("Travel Style: ")
 hotel_cost = float(input("Hotel Cost: "))
 food_cost = float(input("Food Cost: "))
 transportation_cost = float(input("Transportation Cost: "))
 currency = input("Currency: ")
 travel_month = input("Travel Month: ")
-miscellaneous_cost = float(input("Miscellaneous Cost: "))
+miscellaneous_cost = float(input("Other Cost: "))
 
 print_trip_summary(
         destination,

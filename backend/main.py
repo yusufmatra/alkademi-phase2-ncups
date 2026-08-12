@@ -26,6 +26,7 @@ def print_trip_summary(
     print(f"Miscellaneous Cost: {miscellaneous_cost} {currency}")
     print(f"Total Estimated Cost: {total_estimated_cost} {currency}")
     print(f"Travel Month: {travel_month}")
+    print(f"Total: {total_estimated_cost} {currency}")
     print ("==================================")
 
     if total_estimated_cost > budget:

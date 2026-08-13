@@ -13,3 +13,4 @@ def get_trip_category(budget):
 daily = calculate_daily_budget(1500, 5)
 category = get_trip_category(1500)
 print(f"{category} - {daily} USD/day")
+print()

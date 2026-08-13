@@ -5,6 +5,7 @@ budget = float(input("Your Budget: "))
 currency = input("Currency: ")
 travel_month = input("Travel Month: ")
 
+
 def print_trip_summary(
     destination,
     country,
@@ -23,6 +24,7 @@ def print_trip_summary(
     print(f"Currency            : {currency}")
     print(f"Travel Month        : {travel_month}")
     print("===================================")
+
 
 print_trip_summary(
     destination,

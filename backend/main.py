@@ -16,7 +16,7 @@ def print_trip_summary(
     travel_month
 ):
     print("===================================")
-    print("      TRIP SUMMARY KELANA AI      ")
+    print("      TRIP SUMMARY KELANA AI       ")
     print("===================================")
     print(f"Destination         : {destination}")
     print(f"Country             : {country}")

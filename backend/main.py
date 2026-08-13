@@ -28,7 +28,7 @@ def print_trip_summary(
     print(f"Days            : {days}")
     print(f"Budget          : {budget} {currency}")
     print(f"Category        : {get_trip_category(budget)}")
-    print(f"Daily Budget    : {calculate_daily_budget(budget, days)} {currency}/Day")
+    print(f"Daily Budget    : {calculate_daily_budget(budget, days):.2f} {currency}/Day")
     print(f"Travel Month    : {travel_month}")
     print(f"Season          : {get_travel_season(travel_month)}")
     print("==================================")

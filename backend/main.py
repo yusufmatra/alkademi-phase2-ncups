@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from backend.services.trip_service import (
+from services.trip_service import (
     get_trip_category,
     calculate_daily_budget,
 )
@@ -21,28 +21,12 @@ def home():
         "message": "Welcome to KelanaAI"
     }
 
+
 @app.get("/health")
 def health_check():
     return {
-        "status": "Sehat Walafiat"
+        "status": "OK"
     }
-
-@app.get("/api/v1/recommendations")
-def get_recommendations():
-    return [
-        "Tokyo Tower",
-        "Mount Fuji",
-        "Shibuya"
-    ]
-
-
-@app.get("/api/v1/transportations")
-def get_transportations():
-    return [
-        "Bus",
-        "Train",
-        "Flight"
-    ]
 
 
 @app.post("/api/v1/trips")
@@ -58,66 +42,8 @@ def create_trip(request: TripRequest):
 
     return {
         "destination": request.destination,
+        "days": request.days,
         "budget": request.budget,
         "daily_budget": daily_budget,
         "category": category,
     }
-
-
-
-
-
-
-
-
-
-
-
-# from backend.services.trip_service import (
-#     get_trip_category,
-#     get_travel_season,
-#     calculate_daily_budget,
-#     get_recommended_places
-# )
-
-
-# destination = input("Enter Destination: ")
-# days = int(input("Many Days: "))
-# budget = float(input("Your Budget: "))
-# currency = input("Currency: ")
-# travel_month = input("Travel Month: ")
-
-
-# def print_trip_summary(
-#     destination,
-#     days,
-#     budget,
-#     currency,
-#     travel_month
-# ):
-#     print()
-#     print("==================================")
-#     print("KelanaAI")
-#     print("==================================")
-#     print(f"Destination     : {destination}")
-#     print(f"Days            : {days}")
-#     print(f"Budget          : {budget} {currency}")
-#     print(f"Category        : {get_trip_category(budget)}")
-#     print(f"Daily Budget    : {calculate_daily_budget(budget, days):.2f} {currency}/Day")
-#     print(f"Travel Month    : {travel_month}")
-#     print(f"Season          : {get_travel_season(travel_month)}")
-#     print("==================================")
-#     print("Recommended Places")
-#     print("----------------------------------")
-#     get_recommended_places()
-#     print("----------------------------------")
-#     print()
-
-
-# print_trip_summary(
-#     destination,
-#     days,
-#     budget,
-#     currency,
-#     travel_month
-# )

@@ -1,9 +1,9 @@
 
-# Tugas Sesi 1: Building the First Feature of KelanaAI
+# Tugas Sesi 2: Building the First Feature of KelanaAI
 
 Ummi Kalsum Naik Kapal Selam. </br>
 Assalamu'alaikum. Wa'alaikumsalam. </br>
 
-Halo nama gw Yusuf biasa dipanggil Ncups. Di sesi 1 ini kita ditugaskan untuk mengembangkan fitur Trip Summary Generator dalam bentuk aplikasi konsol berbasis Python.
+Halo nama gw Yusuf biasa dipanggil Ncups. Di sesi 1 ini kita ditugaskan untuk mengembangkan fitur Recommendation Engine untuk KelanaAI. </br>
 
-Tujuan tugas ini adalah memastikan kami memahami fondasi pemrograman Python, struktur proyek yang modular, serta alur kerja version control menggunakan Git & GitHub.
+Aplikasi konsol kita akan ditingkatkan kemampuannya agar dapat memproses logika bisnis, mengelola koleksi data menggunakan lists, serta menerapkan arsitektur berlapis (layered architecture) dengan memisahkan fungsi bisnis ke dalam direktori modular.

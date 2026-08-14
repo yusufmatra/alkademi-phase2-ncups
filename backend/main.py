@@ -14,6 +14,7 @@ def print_trip_summary(
     currency,
     travel_month
 ):
+    print()
     print("===================================")
     print("      TRIP SUMMARY KELANA AI       ")
     print("===================================")
@@ -24,6 +25,7 @@ def print_trip_summary(
     print(f"Currency            : {currency}")
     print(f"Travel Month        : {travel_month}")
     print("===================================")
+    print()
 
 
 print_trip_summary(

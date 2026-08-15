@@ -29,6 +29,24 @@ def health_check():
     }
 
 
+@app.get("/api/v1/recommendations")
+def get_recommendations():
+    return [
+        "Tokyo Tower",
+        "Mount Fuji",
+        "Shibuya"
+    ]
+
+
+@app.get("/api/v1/transportations")
+def get_transportations():
+    return [
+        "Bus",
+        "Train",
+        "Flight"
+    ]
+
+
 @app.post("/api/v1/trips")
 def create_trip(request: TripRequest):
     daily_budget = calculate_daily_budget(

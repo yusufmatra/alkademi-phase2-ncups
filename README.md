@@ -1,5 +1,5 @@
 
-# Tugas Sesi 4: Building the First Feature of KelanaAI
+# Tugas Sesi 4: Teaching KelanaAI to Remember (Persistence Layer)
 
 Ummi Kalsum Naik Kapal Selam. </br>
 Assalamu'alaikum. Wa'alaikumsalam. </br>

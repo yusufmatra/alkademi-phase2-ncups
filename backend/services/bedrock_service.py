@@ -46,11 +46,49 @@ def get_ai_recommendation(
     if not model_id:
         raise ValueError("MODEL_ID must be configured in .env")
 
-    prompt = f"""You are an experience travel planner.
-Plan a {days}-day itinerary for {destination}.
-Budget: USD {budget}
-Travel Style: {travel_style}
-Give the answer with the markdown format."""
+    prompt = f"""You are an experienced travel planner.
+
+    Create a detailed {days}-day itinerary for {destination}.
+
+    Trip information:
+    - Destination: {destination}
+    - Budget: USD {budget}
+    - Travel Style: {travel_style}
+
+    Create a structured daily travel plan for every day.
+
+    For each day, use exactly these three sections:
+
+    Morning:
+    - Provide 2-3 specific activities.
+    - Include suitable breakfast recommendations or morning experiences when appropriate.
+
+    Afternoon:
+    - Include cultural sites such as temples, museums, historical landmarks, or other important cultural attractions.
+    - Include authentic local experiences whenever possible.
+
+    Evening:
+    - Recommend suitable dinner spots or local food experiences.
+    - Include evening entertainment or nightlife activities that match the destination and travel style.
+
+    Additional requirements:
+    - Organize the itinerary clearly from Day 1 through Day {days}.
+    - Make the itinerary realistic and geographically sensible.
+    - Avoid repeating the same activities.
+    - Keep recommendations relevant to the destination and travel style.
+    - Consider the provided budget.
+    - Give specific place names whenever possible.
+    - Include short explanations for recommended activities.
+    - Use only the standard ASCII hyphen (-).
+    - Do not use Unicode dashes such as en dash or em dash.
+    - Use standard Markdown syntax.
+    """
+
+    #     prompt = f"""You are an experience travel planner.
+    # Plan a {days}-day itinerary for {destination}.
+    # Budget: USD {budget}
+    # Travel Style: {travel_style}
+    # Give the answer with the markdown format."""
 
     response = _bedrock_client.converse(
         modelId=model_id,

@@ -119,6 +119,35 @@ def get_trip(trip_id: int):
     return trip
 
 
+@app.post("/api/v1/trips/{trip_id}/generate")
+def generate_trip_recommendation(trip_id: int):
+    db = SessionLocal()
+
+    trip = db.query(Trip).filter(Trip.id == trip_id).first()
+
+    if trip is None:
+        db.close()
+        raise HTTPException(
+            status_code=404,
+            detail=f"Trip with id {trip_id} not found"
+        )
+
+    recommendation = get_ai_recommendation(
+        destination=trip.destination,
+        days=trip.days,
+        budget=trip.budget,
+        travel_style="General",
+    )
+
+    trip.ai_recommendation = recommendation
+
+    db.commit()
+    db.refresh(trip)
+    db.close()
+
+    return trip
+
+
 @app.delete("/api/v1/trips/{trip_id}")
 def delete_trip(trip_id: int):
     db = SessionLocal()

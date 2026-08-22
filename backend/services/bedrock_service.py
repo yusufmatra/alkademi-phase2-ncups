@@ -84,12 +84,6 @@ def get_ai_recommendation(
     - Use standard Markdown syntax.
     """
 
-    #     prompt = f"""You are an experience travel planner.
-    # Plan a {days}-day itinerary for {destination}.
-    # Budget: USD {budget}
-    # Travel Style: {travel_style}
-    # Give the answer with the markdown format."""
-
     response = _bedrock_client.converse(
         modelId=model_id,
         messages=[{"role": "user", "content": [{"text": prompt}]}],

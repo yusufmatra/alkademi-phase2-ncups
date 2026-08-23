@@ -10,6 +10,7 @@ from services.bedrock_service import (
     get_ai_recommendation,
 )
 
+
 app = FastAPI()
 
 

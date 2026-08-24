@@ -2,16 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import MarkdownContent from "../components/MarkdownContent";
-
-type DestinationPhoto = {
-  imageUrl: string;
-  alt: string;
-  photographerName: string;
-  photographerUrl: string;
-  unsplashUrl: string;
-};
 
 type Trip = {
   destination: string;
@@ -21,6 +13,17 @@ type Trip = {
   daily_budget: number;
   ai_recommendation?: string | null;
 };
+
+const unsplashPhotos = [
+  "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1494783367193-149034c05e8f?auto=format&fit=crop&w=1600&q=80",
+];
+
+const getPhotoIndex = (destination: string) =>
+	[...destination].reduce((total, character) => total + character.charCodeAt(0), 0) % unsplashPhotos.length;
 
 const formatCurrency = (amount: number) =>
   new Intl.NumberFormat("en-US", {
@@ -36,26 +39,7 @@ export default function TripPage() {
     () => null,
   );
   const trip = storedTrip ? (JSON.parse(storedTrip) as Trip) : null;
-  const destination = trip?.destination;
-  const [photo, setPhoto] = useState<DestinationPhoto | null>(null);
-  const [photoError, setPhotoError] = useState("");
-
-  useEffect(() => {
-    if (!destination) return;
-
-    const loadPhoto = async () => {
-      try {
-        setPhotoError("");
-        const response = await fetch(`/api/photos?query=${encodeURIComponent(destination)}`);
-        if (!response.ok) throw new Error("Destination photo unavailable");
-        setPhoto((await response.json()) as DestinationPhoto);
-      } catch {
-        setPhotoError("Destination photo is unavailable right now.");
-      }
-    };
-
-    loadPhoto();
-  }, [destination]);
+  const photoUrl = unsplashPhotos[getPhotoIndex(trip?.destination || "travel")];
 
   if (!trip) {
     return (
@@ -106,26 +90,18 @@ export default function TripPage() {
             </h1>
           </div>
           <div className="border-4 border-[#111111] bg-[#ffffff] p-2 shadow-[4px_4px_0_#111111]">
-            {photo ? (
-              <>
-                <Image
-                  src={photo.imageUrl}
-                  alt={photo.alt}
-                  width={1600}
-                  height={900}
-                  priority
-                  unoptimized
-                  className="aspect-video w-full border-4 border-[#111111] object-cover object-center"
-                />
-                <p className="px-2 py-3 text-xs font-black uppercase tracking-widest text-[#111111]">
-                  Photo by <a href={photo.photographerUrl} target="_blank" rel="noreferrer" className="underline">{photo.photographerName}</a> on <a href={photo.unsplashUrl} target="_blank" rel="noreferrer" className="underline">Unsplash</a>
-                </p>
-              </>
-            ) : (
-              <div className="flex aspect-video items-center justify-center border-4 border-[#111111] bg-[#f5d547] p-4 text-center text-xs font-black uppercase tracking-widest">
-                {photoError || "Loading destination photo..."}
-              </div>
-            )}
+            <Image
+              src={photoUrl}
+              alt={`Travel destination landscape for ${trip.destination}`}
+              width={1600}
+              height={900}
+              priority
+              unoptimized
+              className="aspect-video w-full border-4 border-[#111111] object-cover object-center"
+            />
+            <p className="px-2 py-3 text-xs font-black uppercase tracking-widest text-[#111111]">
+              Photo from <a href="https://unsplash.com" target="_blank" rel="noreferrer" className="underline">Unsplash</a>
+            </p>
           </div>
         </section>
 

@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111111;
+    --foreground: #111111;
   }
 }
 
@@ -23,4 +23,57 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-space-grotesk), sans-serif;
+}
+
+@layer components {
+  .trip-input {
+    width: 100%;
+    border: 4px solid #111111;
+    background: #f4f0e8;
+    padding: 0.75rem 1rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #111111;
+    outline: none;
+  }
+  .trip-input::placeholder {
+    color: hsl(0, 0%, 67%);
+  }
+
+  .trip-input:hover {
+    background: oklch(98.8% 0.003 106.5);
+  }
+
+  .trip-input:focus {
+    background: #ffffff;
+  }
+
+  .trip-submit {
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    border: 4px solid #111111;
+    background: #fa8cef;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #111111;
+    box-shadow: 4px 4px 0 #111111;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  .trip-submit:hover {
+    transform: translate(0.25rem, 0.25rem);
+    box-shadow: none;
+  }
+
+  .trip-submit:disabled {
+    cursor: wait;
+    opacity: 0.6;
+  }
 }

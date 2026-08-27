@@ -92,6 +92,7 @@ def create_trip(request: TripRequest):
         destination       = request.destination,
         days              = request.days,
         budget            = request.budget,
+        travel_style      = request.travel_style,
         category          = category,
         daily_budget      = daily_budget,
         ai_recommendation = ai_recommendation,
@@ -109,7 +110,7 @@ def create_trip(request: TripRequest):
 @app.get("/api/v1/trips")
 def list_trips():
     db = SessionLocal()
-    trips = db.query(Trip).all()
+    trips = db.query(Trip).order_by(Trip.created_at.desc()).all()
     db.close()
 
     return trips

@@ -33,6 +33,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    router.replace("/login");
+  }
+}, [router]);
+
   const travelStyleMenuRef = useRef<HTMLDivElement>(null);
 
   const selectedTravelStyle = travelStyleOptions.find(

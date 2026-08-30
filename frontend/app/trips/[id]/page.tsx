@@ -1,12 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import MarkdownContent from "../../../components/MarkdownContent";
 import { getTrip } from "../../../services/tripService";
-
-type TripDetailPageProps = {
-  params: Promise<{ id: string }>;
-};
+import type { Trip } from "../../../types/trip";
 
 const unsplashPhotos = [
   "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80",
@@ -29,20 +29,75 @@ const formatCurrency = (amount: number) =>
     maximumFractionDigits: 0,
   }).format(amount);
 
-export default async function TripDetailPage({ params }: TripDetailPageProps) {
-  const { id } = await params;
-  const tripId = Number(id);
+export default function TripDetailPage() {
+  const params = useParams();
+  const router = useRouter();
 
-  if (!Number.isInteger(tripId) || tripId < 1) {
-    notFound();
+  const [trip, setTrip] = useState<Trip | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const tripId = Number(params.id);
+
+useEffect(() => {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    router.replace("/login");
+    return;
   }
 
-  let trip;
-  try {
-    trip = await getTrip(tripId);
-  } catch {
-    notFound();
+  async function loadTrip() {
+    if (!Number.isInteger(tripId) || tripId < 1) {
+      setError("Invalid trip ID.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const data = await getTrip(tripId);
+      setTrip(data);
+    } catch (requestError) {
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Failed to load trip.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
+
+  loadTrip();
+}, [tripId, router]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
+        <div className="mx-auto max-w-5xl">
+          <div className="border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
+            <p className="font-black uppercase">Loading trip...</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (error || !trip) {
+    return (
+      <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
+        <div className="mx-auto max-w-5xl">
+          <div
+            role="alert"
+            className="border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
+          >
+            <p className="font-black">{error || "Trip not found."}</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   const photoUrl = unsplashPhotos[getPhotoIndex(trip.destination)];
 
   return (
@@ -55,6 +110,7 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
           >
             kelana<span className="text-[#ff5c35]">.</span>
           </Link>
+
           <nav className="flex flex-wrap justify-end gap-3">
             <Link
               href="/"
@@ -62,11 +118,18 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
             >
               ✈️ Plan a trip
             </Link>
+
             <Link
               href={`/trips?returnTo=${trip.id}`}
               className="border-2 border-[#111111] bg-[#fff59f] px-3 py-2 text-xs font-black uppercase text-[#111111] active:bg-yellow-400 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
             >
               ⏳ Trip history
+            </Link>
+            <Link
+              href="/profile"
+              className="border-2 border-[#111111] bg-[#A6FAFF] px-3 py-2 text-xs font-black uppercase text-[#111111] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
+            >
+              👤 Profile
             </Link>
           </nav>
         </header>
@@ -76,10 +139,12 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff5c35]">
               Perjalanan Adalah Penyembuhan - Trip
             </p>
+
             <h1 className="mt-3 text-5xl font-black uppercase tracking-[-0.07em] sm:text-8xl">
               {trip.destination}
             </h1>
           </div>
+
           <div className="border-4 border-[#111111] bg-[#ffffff] p-2 shadow-[4px_4px_0_#111111]">
             <Image
               src={photoUrl}
@@ -90,6 +155,7 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
               unoptimized
               className="aspect-video w-full border-4 border-[#111111] object-cover object-center"
             />
+
             <p className="px-2 py-3 text-xs font-black uppercase tracking-widest text-[#111111]">
               Photo from{" "}
               <a
@@ -102,34 +168,48 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
               </a>
             </p>
           </div>
-          <div className="mt-8 grid gap-4 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="mt-8 grid gap-4 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-5">
             <div className="border-4 border-[#111111] bg-[#ff5c35] p-5 shadow-[4px_4px_0_#111111]">
               <p className="text-xs font-black uppercase tracking-widest">
                 Budget
               </p>
+
               <p className="mt-3 text-xl font-black">
                 {formatCurrency(trip.budget)}
               </p>
             </div>
+
             <div className="border-4 border-[#111111] bg-[#f5d547] p-5 shadow-[4px_4px_0_#111111]">
               <p className="text-xs font-black uppercase tracking-widest">
                 Days
               </p>
+
               <p className="mt-3 text-xl font-black">{trip.days} days</p>
             </div>
+
             <div className="border-4 border-[#111111] bg-[#f5d547] p-5 shadow-[4px_4px_0_#111111]">
               <p className="text-xs font-black uppercase tracking-widest">
                 Daily budget
               </p>
+
               <p className="mt-3 text-xl font-black">
                 {formatCurrency(trip.daily_budget)}
               </p>
             </div>
+
             <div className="border-4 border-[#111111] bg-[#ff5c35] p-5 shadow-[4px_4px_0_#111111]">
               <p className="text-xs font-black uppercase tracking-widest">
                 Trip style
               </p>
               <p className="mt-3 text-xl font-black">{trip.category}</p>
+            </div>
+
+            <div className="border-4 border-[#111111] bg-[#ff5c35] p-5 shadow-[4px_4px_0_#111111]">
+              <p className="text-xs font-black uppercase tracking-widest">
+                Trip style
+              </p>
+              <p className="mt-3 text-xl font-black">{trip.travel_style}</p>
             </div>
           </div>
         </section>
@@ -139,10 +219,12 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#111111]">
               AI recommendation for
             </p>
+
             <h2 className="mt-2 text-2xl font-black uppercase tracking-[-0.04em]">
               Your {trip.destination} {trip.days}-Day Itinerary
             </h2>
           </div>
+
           <MarkdownContent
             content={
               trip.ai_recommendation || "Your recommendation is being prepared."

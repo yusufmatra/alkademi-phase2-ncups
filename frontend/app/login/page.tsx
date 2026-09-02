@@ -2,6 +2,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import AppNavbar from "../../components/AppNavbar";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function LoginPage() {
   const router = useRouter();
@@ -39,6 +40,9 @@ export default function LoginPage() {
   }
   return (
     <main className="min-h-screen bg-[#c6fab4] px-6 py-6 text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
+    <div className="mx-auto max-w-[1280px]">
+      <AppNavbar />
+    </div>
     <div className="mx-auto flex min-h-screen max-w-md items-center justify-center">
       <section className="w-full border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
         <div className="mb-8">

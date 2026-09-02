@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         {children}
         <footer className="border-t-4 border-[#111111] bg-[#111111] px-6 py-8 text-[#f4f0e8] sm:px-8 lg:px-12">
-          <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto flex max-w-[1280px] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-xl font-black uppercase tracking-[-0.06em]">
                 kelana<span className="text-[#ff5c35]">.</span>

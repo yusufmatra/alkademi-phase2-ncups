@@ -2,8 +2,8 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { generateTrip } from "../services/tripService";
+import AppNavbar from "../components/AppNavbar";
 
 type TripForm = {
   destination: string;
@@ -92,23 +92,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#c6fab4] text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto min-h-screen max-w-7xl px-6 py-6 sm:px-8 lg:px-12">
-        <header className="flex items-center justify-between border-b-2 border-[#111111] pb-5">
-          <a
-            href="#top"
-            className="text-2xl font-black uppercase tracking-[-0.06em] text-[#111111]"
-          >
-            kelana<span className="text-[#fa8cef]">.</span>
-          </a>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/trips"
-              className="border-2 border-[#111111] bg-[#fff59f] px-3 py-2 text-xs font-black uppercase text-[#111111] active:bg-yellow-400 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-            >
-              ⏳ Trip history
-            </Link>
-          </div>
-        </header>
+      <div className="mx-auto min-h-screen max-w-[1280px] px-6 py-6 sm:px-8 lg:px-12">
+        <AppNavbar />
 
         <section
           id="top"

@@ -1,0 +1,44 @@
+{
+  "question": "What should I pack for a trip to Japan?",
+  "answer": {
+    "ResponseMetadata": {
+      "RequestId": "e3a59b12-ffd2-4e69-89f9-a945fac390bb",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 01 Sep 2026 16:00:39 GMT",
+        "content-type": "application/json",
+        "content-length": "767",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "e3a59b12-ffd2-4e69-89f9-a945fac390bb"
+      },
+      "RetryAttempts": 0
+    },
+    "retrievalResults": [
+      {
+        "content": {
+          "text": "What to Pack for Japan",
+          "type": "TEXT"
+        },
+        "documentId": "s3://kelana-bucket-837933860729-ap-southeast-2-an/Japan-Packing-List.pdf",
+        "location": {
+          "s3Location": {
+            "uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Japan-Packing-List.pdf"
+          },
+          "type": "S3"
+        },
+        "metadata": {
+          "_file_type": "PDF",
+          "_document_title": "Japan-Packing-List.pdf",
+          "_source_uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Japan-Packing-List.pdf",
+          "_chunk_id": "z1FvK3TQZWOihy0WwFCkH-5io8URhBUHaFJwQ6j_ncU",
+          "_data_source_type": "S3",
+          "_language_code": "en",
+          "_created_at": "2026-07-27T03:57:12Z",
+          "_last_updated_at": "2026-07-27T03:57:12Z",
+          "_data_source_id": "WGORFSLRMV"
+        },
+        "score": 0.7552977800369263
+      }
+    ]
+  }
+}

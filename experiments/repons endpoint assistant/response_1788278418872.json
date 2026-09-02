@@ -1,0 +1,44 @@
+{
+  "question": "What are the top attractions to visit in Tokyo?",
+  "answer": {
+    "ResponseMetadata": {
+      "RequestId": "e577cb0e-fd52-4ab7-94e4-dadbc6f066a6",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 01 Sep 2026 16:00:18 GMT",
+        "content-type": "application/json",
+        "content-length": "1948",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "e577cb0e-fd52-4ab7-94e4-dadbc6f066a6"
+      },
+      "RetryAttempts": 0
+    },
+    "retrievalResults": [
+      {
+        "content": {
+          "text": "---\n\n## ð??¡ 4. Top Attractions\n\n*   **Shibuya Crossing & Shibuya Sky:** Experience the world's busiest pedestrian intersection, then head up to *Shibuya Sky* for a 360-degree open-air rooftop view of the city skyline.\n*   **Senso-ji Temple (Asakusa):** Tokyo's oldest and most iconic Buddhist temple, approached via the vibrant Nakamise shopping street.\n*   **Meiji Shrine & Harajuku:** A serene forested shrine dedicated to Emperor Meiji, located right next to Harajuku's eccentric fashion hub (Takeshita Street) and Omotesando.\n*   **Akihabara:** The global epicenter of anime, manga, electronics, retro video games, and otaku culture.\n*   **teamLab Planets TOKYO:** An immersive, digital art museum where you walk barefoot through water, light installations, and giant floating spheres. *(Book weeks in advance!)*\n*   **Tokyo Skytree / Tokyo Tower:** Towering observation decks offering incredible panoramic views stretching all the way to Mount Fuji on a clear day.\n\n---\n\n## ð??° 5. Cost Estimation: Budget to Luxury\n\n*Note: Prices are estimates per person and can vary based on season and exchange rates (Estimated in USD).*\n\n### ð??? Budget / Backpacker Style",
+          "type": "TEXT"
+        },
+        "documentId": "s3://kelana-bucket-837933860729-ap-southeast-2-an/Tokyo_Travel_Guide_EN.md",
+        "location": {
+          "s3Location": {
+            "uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Tokyo_Travel_Guide_EN.md"
+          },
+          "type": "S3"
+        },
+        "metadata": {
+          "_file_type": "PLAIN_TEXT",
+          "_document_title": "Tokyo_Travel_Guide_EN.md",
+          "_source_uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Tokyo_Travel_Guide_EN.md",
+          "_chunk_id": "Wzt4XH_MjbynQuZvRwmTKSkXpj6BiPZVOm-UHpCDZr8",
+          "_data_source_type": "S3",
+          "_language_code": "en",
+          "_created_at": "2026-09-01T05:09:10Z",
+          "_last_updated_at": "2026-09-01T05:09:10Z",
+          "_data_source_id": "WGORFSLRMV"
+        },
+        "score": 0.4903266727924347
+      }
+    ]
+  }
+}

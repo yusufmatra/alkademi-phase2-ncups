@@ -1,0 +1,45 @@
+{
+  "question": "What does the travel insurance cover?",
+  "answer": {
+    "ResponseMetadata": {
+      "RequestId": "781cabe7-77ca-454b-bd65-5b4e48e71d5b",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 01 Sep 2026 16:00:56 GMT",
+        "content-type": "application/json",
+        "content-length": "1294",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "781cabe7-77ca-454b-bd65-5b4e48e71d5b"
+      },
+      "RetryAttempts": 0
+    },
+    "retrievalResults": [
+      {
+        "content": {
+          "text": "**Travel Aid** (4 items) - Travel Pillow - Mp3 Player - Earplugs - Eye Mask 5. **Electronic Devices** (4 items) - Smartphone / Cell Phone - Camera & Accessories - Laptop / Tablet - Power Adapters 6. **Daily Essentials** (3 items) - Money (for exchanging) - Purse / Wallet / Fanny Pack 7. **Medication** (6 items) - Allergy Medication - Multivitamins - Hand Sanitizer - Pain Medication - Digestive Medication - Prescription Medication (research restrictions) 8. **Miscellaneous** (2 items) - Small Gifts - Japanese Dictionary 9.",
+          "type": "TEXT"
+        },
+        "documentId": "s3://kelana-bucket-837933860729-ap-southeast-2-an/Japan-Packing-List.pdf",
+        "location": {
+          "s3Location": {
+            "uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Japan-Packing-List.pdf"
+          },
+          "type": "S3"
+        },
+        "metadata": {
+          "_file_type": "PDF",
+          "_document_title": "Japan-Packing-List.pdf",
+          "_source_uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/Japan-Packing-List.pdf",
+          "_chunk_id": "HYT9sTIOgypEE5Z_JqsX_t8neaCuuC29Do0s5VYRI3w",
+          "_data_source_type": "S3",
+          "_language_code": "en",
+          "_created_at": "2026-07-27T03:57:12Z",
+          "_last_updated_at": "2026-07-27T03:57:12Z",
+          "_data_source_id": "WGORFSLRMV",
+          "_media_type": "image"
+        },
+        "score": 0.7430665493011475
+      }
+    ]
+  }
+}

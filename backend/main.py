@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from services.auth_service import register, login, get_current_user
+from services.kb_service import retrieve_and_generate
 from pydantic import BaseModel
 
 from services.trip_service  import (
@@ -45,6 +46,9 @@ class LoginRequest(BaseModel):
     email: str
     password: str
 
+
+class AskRequest(BaseModel):
+    question: str
 
 init_db()
 
@@ -338,3 +342,16 @@ def update_trip(
     db.close()
 
     return trip
+
+
+@app.post("/api/v1/assistant")
+def assistant_endpoint(request: AskRequest):
+    result = retrieve_and_generate(request.question)
+
+    return {
+        "question": request.question,
+        "answer": result["answer"],
+        "source": result["source"],
+    }
+
+

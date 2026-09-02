@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppNavbar from "../../../components/AppNavbar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -74,7 +74,7 @@ useEffect(() => {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-[1280px]">
           <div className="border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
             <p className="font-black uppercase">Loading trip...</p>
           </div>
@@ -86,7 +86,7 @@ useEffect(() => {
   if (error || !trip) {
     return (
       <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-[1280px]">
           <div
             role="alert"
             className="border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
@@ -102,37 +102,8 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto max-w-5xl">
-        <header className="flex items-center justify-between border-b-2 border-[#111111] pb-5">
-          <Link
-            href="/"
-            className="text-2xl font-black uppercase tracking-[-0.06em]"
-          >
-            kelana<span className="text-[#ff5c35]">.</span>
-          </Link>
-
-          <nav className="flex flex-wrap justify-end gap-3">
-            <Link
-              href="/"
-              className="border-2 border-[#111111] bg-[#c6fab4] px-3 py-2 text-xs font-black uppercase text-[#111111] hover:bg-[#c6fab4] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-            >
-              ✈️ Plan a trip
-            </Link>
-
-            <Link
-              href={`/trips?returnTo=${trip.id}`}
-              className="border-2 border-[#111111] bg-[#fff59f] px-3 py-2 text-xs font-black uppercase text-[#111111] active:bg-yellow-400 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-            >
-              ⏳ Trip history
-            </Link>
-            <Link
-              href="/profile"
-              className="border-2 border-[#111111] bg-[#A6FAFF] px-3 py-2 text-xs font-black uppercase text-[#111111] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-            >
-              👤 Profile
-            </Link>
-          </nav>
-        </header>
+      <div className="mx-auto max-w-[1280px]">
+        <AppNavbar />
 
         <section className="grid gap-8 py-12 sm:py-12 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-12">
           <div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import AppNavbar from "../../components/AppNavbar";
 import { getCurrentUser } from "../../services/authService";
 import { getTrips } from "../../services/tripService";
 import type { User } from "../../types/user";
@@ -109,31 +110,10 @@ export default function ProfilePage() {
 
   return (
     <main className="min-h-screen bg-[#fa8cef] px-6 py-6 text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <header className="flex items-center justify-between border-b-2 border-[#111111] pb-5">
-        <Link
-          href="/"
-          className="text-2xl font-black uppercase tracking-[-0.06em]"
-        >
-          kelana<span className="text-[#fa8cef]">.</span>
-        </Link>
-
-        <nav className="flex flex-wrap justify-end gap-3">
-          <Link
-            href="/"
-            className="border-2 border-[#111111] bg-[#c6fab4] px-3 py-2 text-xs font-black uppercase text-[#111111] hover:bg-[#c6fab4] active:bg-[#7df752] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-          >
-            ✈️ Plan a trip
-          </Link>
-
-          <Link
-            href="/trips"
-            className="border-2 border-[#111111] bg-[#fff59f] px-3 py-2 text-xs font-black uppercase text-[#111111] active:bg-yellow-400 hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] sm:text-sm"
-          >
-            ⏳ Trip history
-          </Link>
-        </nav>
-      </header>
-      <div className="mx-auto flex mt-12 max-w-md items-center justify-center">
+      <div className="mx-auto max-w-[1280px]">
+        <AppNavbar />
+      </div>
+      <div className="mx-auto mt-12 flex max-w-[1280px] items-center justify-center">
         <section className="w-full border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
           <div className="mb-8">
             <Link

@@ -25,6 +25,10 @@ body {
   font-family: var(--font-space-grotesk), sans-serif;
 }
 
+body:has(.assistant-page) > footer {
+  display: none;
+}
+
 @layer components {
   .trip-input {
     width: 100%;

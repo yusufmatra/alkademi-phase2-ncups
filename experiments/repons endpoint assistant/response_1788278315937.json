@@ -1,0 +1,44 @@
+{
+  "question": "What documents are required to visit Japan?",
+  "answer": {
+    "ResponseMetadata": {
+      "RequestId": "4077b962-e52a-4c1b-86bb-589eaddb4ce9",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 01 Sep 2026 15:58:35 GMT",
+        "content-type": "application/json",
+        "content-length": "2222",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "4077b962-e52a-4c1b-86bb-589eaddb4ce9"
+      },
+      "RetryAttempts": 0
+    },
+    "retrievalResults": [
+      {
+        "content": {
+          "text": "Copy of documents prepared in Japan will be accepted; however, original documents may be requested if the Embassy/Consulate-General of Japan, where the visa application is to be submitted, requires detailed confirmation. Documents must have been issued within the last three months and must be valid at the time of submission. Submitted documents, except passport, will not be returned. It takes approximately one week to process the application. You may be required to submit additional documents on a case-by-case basis. It may take longer than usual to process the application in case the Embassy/Consulate-General of Japan deems necessary to consult with the Ministry of Foreign Affairs in Tokyo. 1 [Notes on documents to be prepared in Japan] Copies will be accepted. The documents must have been issued within the last three months and must be valid at the time of submission. 1. Invitation Letter The letter should be addressed to the Japanese Ambassador or the Consul General. (Example: To: Ambassador/ Consul General of Japan in India) Provide details of activities planned in Japan related to the purpose of visit to Japan (vague description such as tourism and visiting friends/ relatives is NOT acceptable). Include inviting person's name, address and phone number. Write full name of the visa applicant in the Latin alphabet. Where there is more than one applicant, submit List of Visa Applicants. 2.",
+          "type": "TEXT"
+        },
+        "documentId": "s3://kelana-bucket-837933860729-ap-southeast-2-an/single-entry-short-term-visa-japan.pdf",
+        "location": {
+          "s3Location": {
+            "uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/single-entry-short-term-visa-japan.pdf"
+          },
+          "type": "S3"
+        },
+        "metadata": {
+          "_file_type": "PDF",
+          "_document_title": "single-entry-short-term-visa-japan.pdf",
+          "_source_uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/single-entry-short-term-visa-japan.pdf",
+          "_chunk_id": "MdcDxkGx1rKtDuZfQteZbMzF27dh6yewj92fdtvZlwI",
+          "_data_source_type": "S3",
+          "_language_code": "en",
+          "_created_at": "2026-07-27T03:57:16Z",
+          "_last_updated_at": "2026-07-27T03:57:16Z",
+          "_data_source_id": "WGORFSLRMV"
+        },
+        "score": 0.6747252345085144
+      }
+    ]
+  }
+}

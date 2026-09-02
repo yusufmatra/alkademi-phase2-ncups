@@ -1,0 +1,46 @@
+{
+  "question": "Do Indonesian passport holders need a visa to visit Japan?",
+  "answer": {
+    "ResponseMetadata": {
+      "RequestId": "6cbdb574-3822-45d9-8e3f-336e236e2422",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 01 Sep 2026 15:59:44 GMT",
+        "content-type": "application/json",
+        "content-length": "2969",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "6cbdb574-3822-45d9-8e3f-336e236e2422"
+      },
+      "RetryAttempts": 0
+    },
+    "retrievalResults": [
+      {
+        "content": {
+          "text": "April 2025\nChecklist for \"Single-Entry Short-Term Stay Visa\" April 2025 for all nationalities except China, Russia, CIS Countries, Ukraine, Georgia, and the Philippines It is not permitted to perform any activities to undertake revenue-generating business operations or to receive remuneration in Japan.\nPurpose of Visit\tShort-Term Business Affairs, etc. Attending meetings/conferences, business communication, business negotiation, after- sales service, marketing, Cultural exchange, Sports exchange, etc.\tVisiting Relatives/Friends Visiting spouse, blood relatives/relatives by affinity within the third degree Visiting friends/acquaintances\tTourism\nDocuments to be submitted\tValid passport 21 Visa application form 31 Photo Itinerary with the flight/ship number and date of arrival and departure to and from Japan 5 Document to prove that you are traveling to Japan for business purposes (any of the following) Travel order issued by your employer Letter from employer Document equivalent to the above Certificate of employment\tValid passport 21 Visa application form 31 Photo Itinerary with the flight/ship number and date of arrival and departure to and from Japan 5 One of the following documents to prove ability to pay travel expenses during your stay in Japan (if you pay your own travel expenses) Income certificate or tax return issued by a public agency Bank statement, balance certificate etc. 6 Document to prove kinship, friendship, or acquaintance relationship Visiting relatives: Birth certificate, Marriage certificate, Family register certificate (Kosekitohon) etc. (copies will be accepted) Visiting friends/acquaintances: Photos, E-mails, Call history, Letters etc.\tValid Passport 21 Visa application form 31 Photo Flight itinerary with the flight/ship number and date of arrival and departure to and from Japan One of the following documents to prove ability to pay travel expenses during your stay in Japan Income certificate or tax return issued by a public agency Bank statement, balance certificate etc. 6Itinerary in Japan (p.6)",
+          "type": "TEXT"
+        },
+        "documentId": "s3://kelana-bucket-837933860729-ap-southeast-2-an/single-entry-short-term-visa-japan.pdf",
+        "location": {
+          "s3Location": {
+            "uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/single-entry-short-term-visa-japan.pdf"
+          },
+          "type": "S3"
+        },
+        "metadata": {
+          "_file_type": "PDF",
+          "_document_title": "single-entry-short-term-visa-japan.pdf",
+          "_source_uri": "https://kelana-bucket-837933860729-ap-southeast-2-an.s3.ap-southeast-2.amazonaws.com/single-entry-short-term-visa-japan.pdf",
+          "_chunk_id": "lypnJMTMZ6L0RPvOqsAZblmXbEg0siu4eEgcfFOn-UM",
+          "_data_source_type": "S3",
+          "_language_code": "en",
+          "_created_at": "2026-07-27T03:57:16Z",
+          "_last_updated_at": "2026-07-27T03:57:16Z",
+          "_data_source_id": "WGORFSLRMV",
+          "_table_section_title": "April 2025",
+          "_table_id": "ta4VtvbVuJQf9Gsbuxx3B4a6GjrZoykE3RcGy4MJvFQ"
+        },
+        "score": 0.5835283994674683
+      }
+    ]
+  }
+}

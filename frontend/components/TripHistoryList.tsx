@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import TripCard from "./TripCard";
 import type { Trip } from "../types/trip";
 
@@ -75,6 +76,20 @@ export default function TripHistoryList({ trips }: TripHistoryListProps) {
         <p className="mt-3 font-medium">
           Create your first itinerary to see it here.
         </p>
+        <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link
+            href="/"
+            className="border-2 border-[#111111] bg-[#fa8cef] px-5 py-3 text-sm font-black uppercase text-[#111111] shadow-[3px_3px_0_#111111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          >
+            Plan Your Trip
+          </Link>
+          <Link
+            href="/assistant"
+            className="border-2 border-[#111111] bg-[#79F7FF] px-5 py-3 text-sm font-black uppercase text-[#111111] shadow-[3px_3px_0_#111111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          >
+            Ask Assistant
+          </Link>
+        </div>
       </section>
     );
   }

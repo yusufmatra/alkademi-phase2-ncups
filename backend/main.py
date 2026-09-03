@@ -11,6 +11,8 @@ from services.trip_service  import (
 
 from services.bedrock_service import (
     get_ai_recommendation,
+    get_chat_response,
+    build_chat_prompt,
 )
 
 
@@ -29,6 +31,8 @@ app.add_middleware(
 from database import init_db, SessionLocal
 from models.trip import Trip
 from models.user import User
+from models.conversation import Conversation
+from models.message import Message
 
 class TripRequest(BaseModel):
     destination: str
@@ -49,6 +53,14 @@ class LoginRequest(BaseModel):
 
 class AskRequest(BaseModel):
     question: str
+
+
+class MessageRequest(BaseModel):
+    content: str
+
+
+class ConversationUpdateRequest(BaseModel):
+    title: str
 
 init_db()
 
@@ -355,3 +367,257 @@ def assistant_endpoint(request: AskRequest):
     }
 
 
+@app.post("/api/v1/conversations", status_code=201)
+def create_conversation(
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversation = Conversation(
+            user_id=user_id
+        )
+
+        db.add(conversation)
+        db.commit()
+        db.refresh(conversation)
+
+        return {
+            "conversation_id": conversation.id
+        }
+
+    finally:
+        db.close()
+
+
+@app.patch("/api/v1/conversations/{conversation_id}")
+def rename_conversation(
+    conversation_id: int,
+    request: ConversationUpdateRequest,
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversation = (
+            db.query(Conversation)
+            .filter(
+                Conversation.id == conversation_id,
+                Conversation.user_id == user_id
+            )
+            .first()
+        )
+
+        if conversation is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Conversation not found"
+            )
+
+        conversation.title = request.title
+
+        db.commit()
+        db.refresh(conversation)
+
+        return {
+            "id": conversation.id,
+            "title": conversation.title,
+        }
+
+    finally:
+        db.close()
+
+
+@app.delete("/api/v1/conversations/{conversation_id}")
+def delete_conversation(
+    conversation_id: int,
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversation = (
+            db.query(Conversation)
+            .filter(
+                Conversation.id == conversation_id,
+                Conversation.user_id == user_id
+            )
+            .first()
+        )
+
+        if conversation is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Conversation not found"
+            )
+
+        db.query(Message).filter(
+            Message.conversation_id == conversation_id
+        ).delete()
+
+        db.delete(conversation)
+        db.commit()
+
+        return {
+            "message": "Conversation deleted successfully"
+        }
+
+    finally:
+        db.close()
+
+
+@app.post("/api/v1/conversations/{conversation_id}/messages")
+def send_message(
+    conversation_id: int,
+    request: MessageRequest,
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversation = (
+            db.query(Conversation)
+            .filter(
+                Conversation.id == conversation_id,
+                Conversation.user_id == user_id
+            )
+            .first()
+        )
+
+        if conversation is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Conversation not found"
+            )
+
+        user_message = Message(
+            conversation_id=conversation_id,
+            role="user",
+            content=request.content
+        )
+
+        db.add(user_message)
+        db.commit()
+        db.refresh(user_message)
+
+        messages = (
+        db.query(Message)
+        .filter(Message.conversation_id == conversation_id)
+        .order_by(Message.created_at.desc())
+        .limit(10)
+        .all()
+        )
+
+        messages.reverse()
+
+        chat_messages = [
+        {
+            "role": message.role,
+            "content": [{"text": message.content}]
+        }
+        for message in messages
+        ]
+
+        prompt = build_chat_prompt(chat_messages)
+
+        ai_response = get_chat_response([
+            {
+                "role": "user",
+                "content": [{"text": prompt}]
+            }
+        ])
+
+        assistant_message = Message(
+            conversation_id=conversation_id,
+            role="assistant",
+            content=ai_response
+        )
+
+        db.add(assistant_message)
+        db.commit()
+        db.refresh(assistant_message)
+
+        return {
+            "message_id": user_message.id,
+            "message_created_at": user_message.created_at,
+            "assistant_message_id": assistant_message.id,
+            "role": assistant_message.role,
+            "content": assistant_message.content,
+            "created_at": assistant_message.created_at,
+        }
+
+    finally:
+        db.close()
+
+
+@app.get("/api/v1/conversations/{conversation_id}/messages")
+def get_conversation_messages(
+    conversation_id: int,
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversation = (
+            db.query(Conversation)
+            .filter(
+                Conversation.id == conversation_id,
+                Conversation.user_id == user_id
+            )
+            .first()
+        )
+
+        if conversation is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Conversation not found"
+            )
+
+        messages = (
+            db.query(Message)
+            .filter(
+                Message.conversation_id == conversation_id
+            )
+            .order_by(Message.created_at.asc())
+            .all()
+        )
+
+        return [
+            {
+                "id": message.id,
+                "role": message.role,
+                "content": message.content,
+                "created_at": message.created_at,
+            }
+            for message in messages
+        ]
+
+    finally:
+        db.close()
+
+
+@app.get("/api/v1/conversations")
+def list_conversations(
+    user_id: int = Depends(get_current_user)
+):
+    db = SessionLocal()
+
+    try:
+        conversations = (
+            db.query(Conversation)
+            .filter(Conversation.user_id == user_id)
+            .order_by(Conversation.created_at.desc())
+            .all()
+        )
+
+        return [
+            {
+                "id": conversation.id,
+                "title": conversation.title,
+                "created_at": conversation.created_at,
+            }
+            for conversation in conversations
+        ]
+
+    finally:
+        db.close()

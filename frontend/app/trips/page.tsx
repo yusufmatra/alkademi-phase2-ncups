@@ -49,10 +49,12 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-[#a5b4fb] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#06060610_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto max-w-[1280px]">
-        <AppNavbar />
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+        <div className="col-span-12">
+          <AppNavbar />
+        </div>
 
-        <section className="py-12 sm:py-10">
+        <section className="col-span-12 py-12 sm:py-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-[#111111] font-black uppercase">
             👋 Welcome back, {userName}. This is your
           </p>
@@ -69,18 +71,20 @@ useEffect(() => {
         </section>
 
         {isLoading ? (
-          <div className="border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
+          <div className="col-span-12 border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
             <p className="font-black uppercase">Loading trips...</p>
           </div>
         ) : error ? (
           <div
             role="alert"
-            className="border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
+            className="col-span-12 border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
           >
             <p className="font-black">{error}</p>
           </div>
         ) : (
-          <TripHistoryList trips={trips} />
+          <div className="col-span-12">
+            <TripHistoryList trips={trips} />
+          </div>
         )}
       </div>
     </main>

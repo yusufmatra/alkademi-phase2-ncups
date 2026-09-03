@@ -71,8 +71,8 @@ export default function ProfilePage() {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-[#c6fab4] px-6 py-6 text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto flex min-h-screen max-w-md items-center justify-center">
-          <section className="w-full border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
+        <div className="mx-auto grid min-h-screen w-full max-w-[1280px] grid-cols-12 items-center gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+          <section className="col-span-12 w-full justify-self-center border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:col-start-3 sm:col-span-8 sm:p-8 lg:col-start-5 lg:col-span-4">
             <p className="text-xs font-black uppercase tracking-[0.2em]">
               Loading profile...
             </p>
@@ -85,8 +85,8 @@ export default function ProfilePage() {
   if (error) {
     return (
       <main className="min-h-screen bg-[#c6fab4] px-6 py-6 text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto flex min-h-screen max-w-md items-center justify-center">
-          <section className="w-full border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
+        <div className="mx-auto grid min-h-screen w-full max-w-[1280px] grid-cols-12 items-center gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+          <section className="col-span-12 w-full justify-self-center border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:col-start-3 sm:col-span-8 sm:p-8 lg:col-start-5 lg:col-span-4">
             <div
               role="alert"
               className="border-4 border-[#111111] bg-[#f5d547] px-4 py-3 text-sm font-bold"
@@ -110,11 +110,13 @@ export default function ProfilePage() {
 
   return (
     <main className="min-h-screen bg-[#fa8cef] px-6 py-6 text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto max-w-[1280px]">
-        <AppNavbar />
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+        <div className="col-span-12">
+          <AppNavbar />
+        </div>
       </div>
-      <div className="mx-auto mt-12 flex max-w-[1280px] items-center justify-center">
-        <section className="w-full border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
+      <div className="mx-auto mt-12 grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 pb-12 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+        <section className="col-span-12 border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:col-start-2 sm:col-span-10 sm:p-8 lg:col-start-4 lg:col-span-6">
           <div className="mb-8">
             <Link
               href="/"

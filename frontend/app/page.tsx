@@ -92,14 +92,16 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#c6fab4] text-[#111111] bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto min-h-screen max-w-[1280px] px-6 py-6 sm:px-8 lg:px-12">
-        <AppNavbar />
+      <div className="mx-auto grid min-h-screen w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 py-6 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+        <div className="col-span-12">
+          <AppNavbar />
+        </div>
 
         <section
           id="top"
-          className="grid gap-12 py-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20 lg:py-20"
+          className="col-span-12 grid grid-cols-12 items-center gap-x-6 gap-y-12 py-14 sm:gap-x-8 lg:gap-x-10 lg:gap-y-20 lg:py-20"
         >
-          <div>
+          <div className="col-span-12 lg:col-span-6">
             <p className="mb-6 flex items-center gap-3 text-xs font-black uppercase tracking-[0.22em] text-[#111111]">
               <span className="h-1 w-8 bg-[#111111]" />
               Your next chapter
@@ -126,7 +128,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative col-span-12 lg:col-span-6">
             <div className="absolute -right-4 -top-4 h-20 w-20 border-4 border-[#111111] bg-[#79F7FF]" />
             <div className="relative border-4 border-[#111111] bg-white p-6 shadow-[8px_8px_0_#111111] sm:p-8">
               <div className="mb-8 flex items-start justify-between">

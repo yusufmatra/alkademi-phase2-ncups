@@ -91,3 +91,48 @@ def get_ai_recommendation(
     )
 
     return response["output"]["message"]["content"][0]["text"]
+
+
+def get_chat_response(messages: list[dict]) -> str:
+    global _bedrock_client
+
+    if _bedrock_client is None:
+        configure_bedrock_api_key()
+
+    model_id = os.getenv("MODEL_ID")
+
+    if not model_id:
+        raise ValueError("MODEL_ID must be configured in .env")
+
+    response = _bedrock_client.converse(
+        modelId=model_id,
+        messages=messages,
+        inferenceConfig={
+            "maxTokens": 1000,
+            "temperature": 0.7,
+        },
+    )
+
+    return response["output"]["message"]["content"][0]["text"]
+
+
+def build_chat_prompt(messages: list[dict]) -> str:
+    conversation = ""
+
+    for message in messages:
+        role = message["role"]
+        content = message["content"][0]["text"]
+
+        conversation += f"{role}: {content}\n"
+
+    prompt = f"""You are KelanaAI, a helpful travel assistant.
+
+Here is the conversation history:
+
+{conversation}
+
+Respond naturally to the user's latest message.
+Use the conversation history to understand the context.
+"""
+
+    return prompt

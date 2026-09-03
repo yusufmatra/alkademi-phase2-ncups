@@ -74,8 +74,8 @@ useEffect(() => {
   if (isLoading) {
     return (
       <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto max-w-[1280px]">
-          <div className="border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+          <div className="col-span-12 border-4 border-[#111111] bg-[#fffdf8] p-8 text-center shadow-[6px_6px_0_#111111]">
             <p className="font-black uppercase">Loading trip...</p>
           </div>
         </div>
@@ -86,10 +86,10 @@ useEffect(() => {
   if (error || !trip) {
     return (
       <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-        <div className="mx-auto max-w-[1280px]">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
           <div
             role="alert"
-            className="border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
+            className="col-span-12 border-4 border-[#111111] bg-[#f5d547] p-8 shadow-[6px_6px_0_#111111]"
           >
             <p className="font-black">{error || "Trip not found."}</p>
           </div>
@@ -102,11 +102,13 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-[#f1ede2] px-6 py-6 text-[#111111] sm:px-8 lg:px-12 bg-[radial-gradient(#11111111_1px,transparent_1px)] bg-[size:16px_16px]">
-      <div className="mx-auto max-w-[1280px]">
-        <AppNavbar />
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 gap-x-6 px-4 sm:gap-x-8 sm:px-8 lg:gap-x-10 lg:px-12">
+        <div className="col-span-12">
+          <AppNavbar />
+        </div>
 
-        <section className="grid gap-8 py-12 sm:py-12 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-12">
-          <div>
+        <section className="col-span-12 grid grid-cols-12 items-center gap-x-6 gap-y-8 py-12 sm:gap-x-8 lg:gap-x-10 lg:gap-y-12">
+          <div className="col-span-12 lg:col-span-7">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff5c35]">
               Perjalanan Adalah Penyembuhan - Trip
             </p>
@@ -116,7 +118,7 @@ useEffect(() => {
             </h1>
           </div>
 
-          <div className="border-4 border-[#111111] bg-[#ffffff] p-2 shadow-[4px_4px_0_#111111]">
+          <div className="col-span-12 border-4 border-[#111111] bg-[#ffffff] p-2 shadow-[4px_4px_0_#111111] lg:col-span-5">
             <Image
               src={photoUrl}
               alt={`Travel destination landscape for ${trip.destination}`}
@@ -140,7 +142,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="col-span-12 mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             <div className="border-4 border-[#111111] bg-[#ff5c35] p-5 shadow-[4px_4px_0_#111111]">
               <p className="text-xs font-black uppercase tracking-widest">
                 Budget
@@ -185,7 +187,7 @@ useEffect(() => {
           </div>
         </section>
 
-        <article className="border-4 border-[#111111] bg-[#fffdf8] p-6 shadow-[8px_8px_0_#111111] sm:p-8">
+        <article className="col-span-12 border-4 border-[#111111] bg-[#fffdf8] p-6 shadow-[8px_8px_0_#111111] sm:p-8">
           <div className="mb-8 border-b-0 border-[#111111] pb-0">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#111111]">
               AI recommendation for

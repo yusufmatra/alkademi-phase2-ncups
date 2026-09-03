@@ -9,7 +9,7 @@ type MarkdownContentProps = {
 
 const DAYS_PER_PAGE = 5;
 
-export default function MarkdownContent({ content }: MarkdownContentProps) {
+export default function MarkdownContent({ content = "" }: MarkdownContentProps) {
   const contentWithoutTitle = content.replace(/^#\s+.*(?:\r?\n|$)/, "").trim();
   const sections = contentWithoutTitle.split(/(?=^##\s+Day\b)/gm);
   const firstSectionIsDay = /^##\s+Day\b/.test(sections[0]?.trim() ?? "");

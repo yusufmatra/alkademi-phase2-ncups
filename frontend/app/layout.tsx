@@ -26,8 +26,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         {children}
         <footer className="border-t-4 border-[#111111] bg-[#111111] px-6 py-8 text-[#f4f0e8] sm:px-8 lg:px-12">
-          <div className="mx-auto flex max-w-[1280px] flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
+          <div className="mx-auto grid w-full max-w-[1280px] grid-cols-12 items-center gap-6 px-4 sm:gap-8 sm:px-8 lg:gap-10 lg:px-12">
+            <div className="col-span-12 sm:col-span-6">
               <p className="text-xl font-black uppercase tracking-[-0.06em]">
                 kelana<span className="text-[#ff5c35]">.</span>
               </p>
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </p>
             </div>
 
-            <nav aria-label="Social links" className="flex flex-wrap gap-3">
+            <nav aria-label="Social links" className="col-span-12 flex flex-wrap gap-3 sm:col-span-6 sm:justify-end">
               <a
                 href="https://instagram.com"
                 target="_blank"

@@ -1,9 +1,4 @@
 
-# Tugas Sesi 7: Connecting KelanaAI's Brain and Face (Trip History Dashboard)
+# Tugas Sesi 10: Teaching KelanaAI to Remember Conversations
 
-Ummi Kalsum Naik Kapal Selam. </br>
-Assalamu'alaikum. Wa'alaikumsalam. </br>
-
-Di sesi 7 ini kita ditugaskan untuk menghubungkan antarmuka frontend (Next.js) dengan persistent storage (PostgreSQL via FastAPI) untuk membangun halaman Trip History Dashboard. </br> 
-
-Tujuan tugas rumah ini adalah mempercantik tampilan kartu perjalanan (Trip Cards) pada dashboard agar memuat informasi yang lebih kaya, interaktif, serta memberikan pengalaman pengguna (UX) yang profesional.
+Di sesi 7 ini kita ditugaskan untuk meningkatkan antarmuka obrolan (chat interface) di Next.js dengan menambahkan empat fitur peningkatan pengalaman pengguna (UX wins).</br> 

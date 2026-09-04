@@ -73,7 +73,7 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="alice@email.com"
+              placeholder="name@email.com"
               className="trip-input"
             />
           </label>

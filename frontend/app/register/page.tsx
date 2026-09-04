@@ -94,7 +94,7 @@ kelana<span className="text-[#fa8cef]">.</span>
             required
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Alice"
+            placeholder="Your Name"
             className="trip-input"
           />
         </label>
@@ -109,7 +109,7 @@ kelana<span className="text-[#fa8cef]">.</span>
             required
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="alice@email.com"
+            placeholder="name@email.com"
             className="trip-input"
           />
         </label>

@@ -1,4 +1,4 @@
 
-# Tugas Sesi 10: Teaching KelanaAI to Remember Conversations
+# Tugas Sesi 11: ...
 
-Di sesi 7 ini kita ditugaskan untuk meningkatkan antarmuka obrolan (chat interface) di Next.js dengan menambahkan empat fitur peningkatan pengalaman pengguna (UX wins).</br> 
+Di sesi 7 ini kita ditugaskan untuk .</br> 

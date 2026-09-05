@@ -9,7 +9,7 @@ export async function getCurrentUser(): Promise<User> {
     throw new Error("Not authenticated");
   }
 
-  const res = await fetch(`${API_URL}/auth/me`, {
+  const res = await fetch(`${API_URL}/api/v1/auth/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

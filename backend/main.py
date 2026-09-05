@@ -26,7 +26,6 @@ app.add_middleware(
         "http://127.0.0.1:3000", 
         "https://kelana-ai-theta.vercel.app",
         ],
-    allow_origin_regex=r"https://kelana-[a-z0-9]+-yusuf-matra\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

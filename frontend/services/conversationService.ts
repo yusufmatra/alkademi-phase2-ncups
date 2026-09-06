@@ -1,6 +1,5 @@
 const API_URL =
-  // process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
-  process.env.NEXT_PUBLIC_API_URL;
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
 export async function createConversation(): Promise<number> {
   const token = localStorage.getItem("access_token");

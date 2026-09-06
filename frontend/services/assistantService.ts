@@ -17,7 +17,7 @@ export async function askAssistant(question: string): Promise<AskResponse> {
   if (!token) {
     throw new Error("You must be logged in to use the assistant.");
   }
-  const response = await fetch(`${API_URL}/assistant`, {
+  const response = await fetch(`${API_URL}/api/v1/assistant`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

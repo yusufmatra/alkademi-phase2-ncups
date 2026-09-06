@@ -5,7 +5,7 @@ export async function createConversation(): Promise<number> {
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations`,
+    `${API_URL}/api/v1/conversations`,
     {
       method: "POST",
       headers: {
@@ -31,7 +31,7 @@ export async function sendConversationMessage(
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations/${conversationId}/messages`,
+    `${API_URL}/api/v1/conversations/${conversationId}/messages`,
     {
       method: "POST",
       headers: {
@@ -58,7 +58,7 @@ export async function getConversationMessages(
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations/${conversationId}/messages`,
+    `${API_URL}/api/v1/conversations/${conversationId}/messages`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ export async function getConversations() {
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations`,
+    `${API_URL}/api/v1/conversations`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -100,7 +100,7 @@ export async function renameConversation(
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations/${conversationId}`,
+    `${API_URL}/api/v1/conversations/${conversationId}`,
     {
       method: "PATCH",
       headers: {
@@ -127,7 +127,7 @@ export async function deleteConversation(
   const token = localStorage.getItem("access_token");
 
   const response = await fetch(
-    `${API_URL}/conversations/${conversationId}`,
+    `${API_URL}/api/v1/conversations/${conversationId}`,
     {
       method: "DELETE",
       headers: {

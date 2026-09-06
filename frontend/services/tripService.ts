@@ -5,7 +5,13 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function getTrips(): Promise<Trip[]> {
   const token = localStorage.getItem("access_token");
 
-const res = await fetch(`${API_URL}/trips`, {
+// const res = await fetch(`${API_URL}/trips`, {
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+//   },
+// });
+
+const res = await fetch(`${API_URL}/api/v1/trips`, {
   headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -21,11 +27,17 @@ const res = await fetch(`${API_URL}/trips`, {
 export async function getTrip(id: number): Promise<Trip> {
   const token = localStorage.getItem("access_token");
 
-  const res = await fetch(`${API_URL}/trips/${id}`, {
+  const res = await fetch(`${API_URL}/api/v1/trips/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  //   const res = await fetch(`${API_URL}/trips/${id}`, {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // });
 
   if (!res.ok) {
     throw new Error(
@@ -39,7 +51,7 @@ export async function getTrip(id: number): Promise<Trip> {
 export async function generateTrip(data: GenerateTripData): Promise<Trip> {
   const token = localStorage.getItem("access_token");
 
-  const res = await fetch(`${API_URL}/trips`, {
+  const res = await fetch(`${API_URL}/api/v1/trips`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,6 +59,15 @@ export async function generateTrip(data: GenerateTripData): Promise<Trip> {
     },
     body: JSON.stringify(data),
   });
+
+  //   const res = await fetch(`${API_URL}/trips`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  //   body: JSON.stringify(data),
+  // });
 
   if (!res.ok) {
     throw new Error(`Failed to generate trip: ${res.status} ${res.statusText}`);

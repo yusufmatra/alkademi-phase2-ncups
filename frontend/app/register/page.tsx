@@ -46,7 +46,7 @@ try {
     );
   }
 
-  router.push("/login");
+  router.push(`/login?email=${encodeURIComponent(email.trim())}`);
 } catch (requestError) {
   setError(
     requestError instanceof TypeError

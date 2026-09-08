@@ -1,15 +1,22 @@
 "use client";
-import { FormEvent, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
+import { useRouter} from "next/navigation";
 import Link from "next/link";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const [email, setEmail] = useState(searchParams.get("email") ||"");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  useEffect(() => {
+  const registeredEmail = sessionStorage.getItem("registered_email");
+
+  if (registeredEmail) {
+    setEmail(registeredEmail);
+    sessionStorage.removeItem("registered_email");
+  }
+}, []);
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);

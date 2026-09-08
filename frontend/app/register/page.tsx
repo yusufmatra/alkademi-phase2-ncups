@@ -34,19 +34,26 @@ try {
     }),
   });
 
+  
   if (!res.ok) {
-    if (res.status === 500) {
-      throw new Error("Email Anda sudah digunakan, silakan login.");
-    }
-
-    const data = await res.json().catch(() => null);
-
-    throw new Error(
-      data?.detail || "Registration failed. Please try again.",
-    );
+  if (res.status === 500) {
+    throw new Error("Email Anda sudah digunakan, silakan login.");
   }
 
-  // sessionStorage.setItem("registered_email", email.trim());
+  const data = await res.json().catch(() => null);
+
+  throw new Error(
+    data?.detail || "Registration failed. Please try again.",
+  );
+}
+
+const data = await res.json();
+
+localStorage.setItem("access_token", data.access_token);
+
+router.push("/trips");
+
+
   router.push(`/login?email=${encodeURIComponent(email.trim())}`);
   // router.push("/login");
 } catch (requestError) {

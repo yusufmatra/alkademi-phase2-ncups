@@ -9,14 +9,25 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  useEffect(() => {
-  const registeredEmail = sessionStorage.getItem("registered_email");
 
-  if (registeredEmail) {
-    setEmail(registeredEmail);
-    sessionStorage.removeItem("registered_email");
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const emailFromUrl = params.get("email");
+
+  if (emailFromUrl) {
+    setEmail(emailFromUrl);
   }
-}, []);
+  }, []);
+
+  // useEffect(() => {
+  // const registeredEmail = sessionStorage.getItem("registered_email");
+
+  // if (registeredEmail) {
+  //   setEmail(registeredEmail);
+  //   sessionStorage.removeItem("registered_email");
+  // }
+  // }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);

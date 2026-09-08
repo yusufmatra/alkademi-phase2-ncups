@@ -46,7 +46,8 @@ try {
     );
   }
 
-  sessionStorage.setItem("registered_email", email.trim());
+  // sessionStorage.setItem("registered_email", email.trim());
+  router.push(`/login?email=${encodeURIComponent(email.trim())}`);
   router.push("/login");
 } catch (requestError) {
   setError(

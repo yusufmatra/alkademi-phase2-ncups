@@ -83,6 +83,19 @@ def login(
     }
 
 
+def create_access_token(user_id: int):
+    token = jwt.encode(
+        {"sub": str(user_id)},
+        SECRET_KEY,
+        algorithm=ALGORITHM
+    )
+
+    return {
+        "access_token": token,
+        "token_type": "Bearer"
+    }
+
+
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ):

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from services.auth_service import register, login, get_current_user
+from services.auth_service import register, login, create_access_token, get_current_user
 from services.kb_service import retrieve_and_generate
 from pydantic import BaseModel
 
@@ -87,24 +87,49 @@ def login_user(request: LoginRequest):
         db.close()
 
 
+# @app.post("/api/v1/auth/register")
+# def register_user(request: RegisterRequest):
+#     db = SessionLocal()
+
+#     user = register(
+#         db=db,
+#         name=request.name,
+#         email=request.email,
+#         password=request.password,
+#     )
+
+#     db.close()
+
+#     return {
+#         "id": user.id,
+#         "name": user.name,
+#         "email": user.email,
+#     }
+
 @app.post("/api/v1/auth/register")
 def register_user(request: RegisterRequest):
     db = SessionLocal()
 
-    user = register(
-        db=db,
-        name=request.name,
-        email=request.email,
-        password=request.password,
-    )
+    try:
+        user = register(
+            db=db,
+            name=request.name,
+            email=request.email,
+            password=request.password,
+        )
 
-    db.close()
+        token = create_access_token(user.id)
 
-    return {
-        "id": user.id,
-        "name": user.name,
-        "email": user.email,
-    }
+        return {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "access_token": token["access_token"],
+            "token_type": token["token_type"],
+        }
+
+    finally:
+        db.close()
 
 
 @app.get("/api/v1/auth/me")

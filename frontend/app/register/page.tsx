@@ -34,7 +34,7 @@ try {
     }),
   });
 
-  
+
   if (!res.ok) {
   if (res.status === 500) {
     throw new Error("Email Anda sudah digunakan, silakan login.");
@@ -54,7 +54,7 @@ localStorage.setItem("access_token", data.access_token);
 router.push("/trips");
 
 
-  router.push(`/login?email=${encodeURIComponent(email.trim())}`);
+  // router.push(`/login?email=${encodeURIComponent(email.trim())}`);
   // router.push("/login");
 } catch (requestError) {
   setError(

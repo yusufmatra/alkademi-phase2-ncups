@@ -50,6 +50,7 @@ try {
 const data = await res.json();
 
 localStorage.setItem("access_token", data.access_token);
+localStorage.setItem("login_email", email.trim());
 
 router.push("/trips");
 

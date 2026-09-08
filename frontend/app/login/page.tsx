@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter} from "next/navigation";
 import Link from "next/link";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -9,6 +9,14 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+  const savedEmail = localStorage.getItem("login_email");
+
+  if (savedEmail) {
+    setEmail(savedEmail);
+  }
+ }, []);
 
   // useEffect(() => {
   // const params = new URLSearchParams(window.location.search);
@@ -34,6 +42,7 @@ export default function LoginPage() {
       }
       const data = await res.json();
       localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("login_email", email.trim());
       router.push("/trips");
     } catch (requestError) {
       setError(

@@ -54,9 +54,9 @@ localStorage.setItem("login_email", email.trim());
 
 router.push("/trips");
 
-
   // router.push(`/login?email=${encodeURIComponent(email.trim())}`);
   // router.push("/login");
+  
 } catch (requestError) {
   setError(
     requestError instanceof TypeError

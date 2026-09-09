@@ -85,26 +85,7 @@ def login_user(request: LoginRequest):
 
     finally:
         db.close()
-
-
-# @app.post("/api/v1/auth/register")
-# def register_user(request: RegisterRequest):
-#     db = SessionLocal()
-
-#     user = register(
-#         db=db,
-#         name=request.name,
-#         email=request.email,
-#         password=request.password,
-#     )
-
-#     db.close()
-
-#     return {
-#         "id": user.id,
-#         "name": user.name,
-#         "email": user.email,
-#     }
+        
 
 @app.post("/api/v1/auth/register")
 def register_user(request: RegisterRequest):

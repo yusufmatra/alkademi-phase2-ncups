@@ -411,7 +411,7 @@ export default function AssistantPage() {
                           aria-label={`Rename ${conversation.title || "conversation"}`}
                           title="Rename conversation"
                         >
-                          ✎
+                          ✎ ✏️
                         </button>
 
                         <button

@@ -407,11 +407,11 @@ export default function AssistantPage() {
                             setEditingConversationId(conversation.id);
                             setEditingTitle(conversation.title || "");
                           }}
-                          className="shrink-0 border-l-2 border-[#111111] pl-2 text-lg font-black"
+                          className="shrink-0 border-l-2 border-[#111111] pl-2 text-lg font-black cursor-pointer"
                           aria-label={`Rename ${conversation.title || "conversation"}`}
                           title="Rename conversation"
                         >
-                          ✎ ✏️
+                          ✎
                         </button>
 
                         <button
@@ -419,7 +419,7 @@ export default function AssistantPage() {
                           onClick={() =>
                             handleDeleteConversation(conversation.id)
                           }
-                          className="shrink-0 text-lg font-black text-[#e33f1e]"
+                          className="shrink-0 text-lg font-black text-[#e33f1e] cursor-pointer"
                           aria-label={`Delete ${conversation.title || "conversation"}`}
                           title="Delete conversation"
                         >
@@ -510,7 +510,7 @@ export default function AssistantPage() {
                           <button
                             type="button"
                             onClick={handleRenameConversation}
-                            className="border-2 border-[#111111] bg-[#fa8cef] px-2 py-1 text-[10px] font-black uppercase"
+                            className="border-2 border-[#111111] bg-[#fa8cef] px-2 py-1 text-[10px] font-black uppercase cursor-pointer"
                           >
                             Save
                           </button>
@@ -521,7 +521,7 @@ export default function AssistantPage() {
                               setEditingConversationId(null);
                               setEditingTitle("");
                             }}
-                            className="border-2 border-[#111111] bg-white px-2 py-1 text-[10px] font-black uppercase"
+                            className="border-2 border-[#111111] bg-white px-2 py-1 text-[10px] font-black uppercase cursor-pointer"
                           >
                             Cancel
                           </button>
@@ -549,7 +549,7 @@ export default function AssistantPage() {
                             setEditingConversationId(conversation.id);
                             setEditingTitle(conversation.title || "");
                           }}
-                          className="shrink-0 border-l-2 border-[#111111] px-2 text-lg font-black"
+                          className="shrink-0 border-l-2 border-[#111111] px-2 text-lg font-black cursor-pointer"
                           aria-label={`Rename ${conversation.title || "conversation"}`}
                           title="Rename conversation"
                         >
@@ -561,7 +561,7 @@ export default function AssistantPage() {
                           onClick={() =>
                             handleDeleteConversation(conversation.id)
                           }
-                          className="shrink-0 px-1 text-lg font-black text-[#e33f1e]"
+                          className="shrink-0 px-1 text-lg font-black text-[#e33f1e] cursor-pointer"
                           aria-label={`Delete ${conversation.title || "conversation"}`}
                           title="Delete conversation"
                         >
